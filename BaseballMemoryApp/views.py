@@ -1,6 +1,6 @@
 # BaseballMemoryApp/views.py
-from django.shortcuts import render, redirect
 from django.http import JsonResponse
+from django.shortcuts import render, redirect
 from .forms import GameForm
 from .models import Game
 
@@ -11,7 +11,7 @@ def game_create_view(request):
         initial_data['date'] = request.GET['date']
 
     if request.method == 'POST':
-        form = GameForm(request.POST)
+        form = GameForm(request.POST, request.FILES)  # 파일 데이터 추가
         if form.is_valid():
             form.save()
             return redirect('calendar')

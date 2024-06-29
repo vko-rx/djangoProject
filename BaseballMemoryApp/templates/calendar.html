@@ -1,16 +1,24 @@
-<!-- templates/calendar.html -->
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Calendar</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css">
+    <link rel="stylesheet" href="{% static 'css/calendar.css' %}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
 </head>
 <body>
-    <h1>Calendar</h1>
-    <div id="calendar"></div>
+    <div class="navbar">
+        <h1>BASEBALL<img src="{% static 'images/ball.png' %}" alt="Vector Image">MEMORY</h1>
+    </div>
+    <div id="instruction-box">
+        <h2>오늘의 직관 일지를 남겨보세요!</h2>
+    </div>
+    <div id="calendar-container">
+        <div id="calendar"></div>
+    </div>
 
     <script>
         $(document).ready(function() {

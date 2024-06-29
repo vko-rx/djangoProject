@@ -1,20 +1,82 @@
-<!-- templates/game_list.html -->
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Game List</title>
+    <link rel="stylesheet" href="{% static 'css/calendar.css' %}">
+    <style>
+        .date-box {
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            text-align: center;
+            padding-right: 20px;
+            padding-left: 20px;
+        }
+        .content-box {
+            border: 2px solid #ccc;
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            background-color: #FFFEF0;
+        }
+
+        .game-details {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .game-details .game-info {
+            flex: 1;
+            text-align: left; /* 텍스트 왼쪽 정렬 */
+        }
+        .game-details .game-image {
+            flex: 1;
+            text-align: left; /* 이미지 왼쪽 정렬 */
+            margin-right: 20px; /* 이미지와 텍스트 사이 여백 설정 */
+        }
+        .game-image img {
+            max-width: 400px;
+            border-radius: 10px; /* 이미지 모서리 둥글게 설정 */
+        }
+        .game-info h3 {
+            margin-top: 0; /* H3 태그의 위 여백을 없애줍니다. */
+            margin-bottom: 5px; /* H3 태그의 아래 여백을 조정합니다. */
+        }
+        .game-info p {
+            margin-top: 5px; /* 문단의 위 여백을 설정합니다. */
+            margin-bottom: 5px; /* 문단의 아래 여백을 설정합니다. */
+            text-decoration: underline;
+            text-decoration-thickness: 1px; /* 밑줄 굵기 설정 */
+        }
+    </style>
 </head>
 <body>
-    <h1>Game List</h1>
-    <ul>
-        {% for game in games %}
-            <li>
-                {{ game.date }}: {{ game.game }} - {{ game.location }} - {{ game.seat }} - {{ game.result }}
+    <div class="navbar">
+        <h1>BASEBALL<img src="{% static 'images/ball.png' %}" alt="Vector Image">MEMORY</h1>
+    </div>
+
+    {% for game in games %}
+            <h2 class="date-box">{{ game.date|date:"Y년 m월 d일" }}</h2>
+    <div class="content-box">
+            <div class="game-details">
                 {% if game.image %}
-                    <br><img src="{{ game.image.url }}" alt="Game Image" style="max-width: 200px;">
+                    <div class="game-image" >
+                        <img src="{{ game.image.url }}" alt="Game Image">
+                    </div>
                 {% endif %}
-            </li>
-        {% endfor %}
-    </ul>
+                <div class="game-info">
+                    <h3>GAME</h3>
+                    <p>{{ game.game }}</p>
+                    <h3>LOCATION</h3>
+                    <p>{{ game.location }}</p>
+                    <h3>SEAT</h3>
+                    <p>{{ game.seat }}</p>
+                    <h3>RESULT</h3>
+                    <p>{{ game.result }}</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
 </body>
 </html>

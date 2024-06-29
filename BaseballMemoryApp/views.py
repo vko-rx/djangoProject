@@ -11,14 +11,14 @@ def game_create_view(request):
         initial_data['date'] = request.GET['date']
 
     if request.method == 'POST':
-        form = GameForm(request.POST, request.FILES)  # 파일 데이터 추가
+        form = GameForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('calendar')
     else:
-        form = GameForm(initial=initial_data)
-    return render(request, 'game_create.html', {'form': form})
+        form = GameForm(initial=initial_data)  # initial 데이터 전달
 
+    return render(request, 'game_create.html', {'form': form})
 
 def game_list_view(request):
     date = request.GET.get('date')

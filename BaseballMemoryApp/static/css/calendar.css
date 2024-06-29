@@ -1,0 +1,53 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.navbar {
+    width: 100%;
+    background-color: #17A1FA;
+    text-align: center;
+    padding: 1em 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* 네비바가 다른 요소 위에 있도록 설정 */
+}
+
+.navbar h1 {
+    margin: 0;
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em; /* 여백을 추가하여 이미지와 텍스트 사이에 간격을 둡니다 */
+}
+
+.navbar h1 img {
+    height: 1em; /* 텍스트 크기에 맞게 이미지 크기를 조정합니다 */
+}
+
+#calendar-container {
+    width: 35vw; /* 35% of the viewport width */
+    height: 35vh; /* 35% of the viewport height */
+    margin-top: 4em; /* Adjusted margin for the navbar */
+    z-index: 0; /* 캘린더를 네비바 아래에 위치시키기 위해 z-index를 설정합니다 */
+    position: relative; /* 상대적 위치 설정 */
+}
+
+#calendar {
+    width: 100%;
+    height: 100%;
+}
+
+#instruction-box {
+    padding-right: 20px;
+    padding-left: 20px;
+    border: 2px solid #ccc; /* 테두리 설정 */
+    border-radius: 20px; /* 테두리 둥글기 설정 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+}
